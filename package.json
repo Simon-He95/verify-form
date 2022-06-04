@@ -30,7 +30,7 @@
     "dist"
   ],
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@Simon-He95:registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "pkgroll --minify",
