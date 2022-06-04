@@ -1,6 +1,6 @@
 {
   "name": "verify-form",
-  "version": "0.0.14-beta.2",
+  "version": "0.0.14-beta.3",
   "description": "Verify Form Component",
   "author": "Simon He",
   "license": "MIT",
@@ -13,8 +13,8 @@
     "url": "https://github.com/Simon-He95/verify-form/issues"
   },
   "keywords": [
-    "RegularForm",
-    "regular-form",
+    "VerifyForm",
+    "verify-form",
     "vue"
   ],
   "exports": {
