@@ -1,6 +1,6 @@
 ## 实现一个类似于Element Plus的表单验证组件
 
-# Api
+# API
 
 - inline :Boolean // 将regular-form-fields改为行内元素
 ### formRef中:

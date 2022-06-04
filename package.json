@@ -24,7 +24,7 @@
     "build": "pkgroll",
     "dev": "pkgroll --watch",
     "play": "pnpm run -C playground dev",
-    "play:build": "vite build playground",
+    "play:build": "pnpm run -C playground build",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
     "test": "vitest",

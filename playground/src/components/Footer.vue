@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { isDark, toggleDark } from "~/composables";
+isDark.value = true;
 </script>
 
 <template>
@@ -13,7 +14,7 @@ import { isDark, toggleDark } from "~/composables";
       class="icon-btn"
       i-carbon-logo-github
       rel="noreferrer"
-      href="https://github.com/Simon-He95/regular-form"
+      href="https://github.com/Simon-He95/verify-form"
       target="_blank"
       title="GitHub"
     />

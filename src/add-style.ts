@@ -2,6 +2,7 @@ export function addStyle() {
   const styles = `
   :root{
     --regular-error-color: #f56c6c;
+    --regular-input-color:#606266;
   }
   .regular-form-field{
     display: flex;
@@ -17,11 +18,13 @@ export function addStyle() {
     width:100%;
     border-radius:5px;
     text-indent:10px;
+    color:var(--regular-input-color);
   }
   .regular-form__inline > .regular-form-field{
     display: inline-flex;
   }
   .regular-form-field__error{
+    padding-top:2px;
     font-size: 12px;
     color: var(--regular-error-color);
   }
