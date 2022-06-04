@@ -1,7 +1,7 @@
 {
   "name": "verify-form",
-  "version": "0.0.3",
-  "description": "",
+  "version": "0.0.5",
+  "description": "Verify Form Component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -23,7 +23,7 @@
   "scripts": {
     "build": "pkgroll",
     "dev": "pkgroll --watch",
-    "play": "vite playground --open",
+    "play": "pnpm run -C playground dev",
     "play:build": "vite build playground",
     "lint": "eslint .",
     "typecheck": "vue-tsc --noEmit",
@@ -32,7 +32,14 @@
     "prepublishOnly": "nr build",
     "release": "bumpp --commit --tag --push && pnpm publish"
   },
-  "author": "Simon <13917107469@163.com> (https://github.com/Simon-He95)",
+  "repository": {
+    "type": "git",
+    "url": "git + git@github.com:Simon-He95/verify-form.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Simon-He95/verify-form/issues"
+  },
+  "author": "Simon He",
   "license": "MIT",
   "devDependencies": {
     "@antfu/eslint-config": "^0.25.0",
@@ -43,7 +50,11 @@
     "eslint-plugin-n": "^15.2.1",
     "pkgroll": "^1.3.1",
     "typescript": "^4.7.2",
-    "verify-form": "workspace:^0.0.2",
+    "verify-form": "workspace:0.0.4",
     "vitest": "^0.13.1"
+  },
+  "dependencies": {
+    "vue": "^3.2.36",
+    "@vueuse/core": "^8.1.1"
   }
 }

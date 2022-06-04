@@ -13,7 +13,7 @@ import { isDark, toggleDark } from "~/composables";
       class="icon-btn"
       i-carbon-logo-github
       rel="noreferrer"
-      href="https://github.com/Simon-He95/regularfrom"
+      href="https://github.com/Simon-He95/regular-form"
       target="_blank"
       title="GitHub"
     />
