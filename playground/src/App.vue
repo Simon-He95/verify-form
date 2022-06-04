@@ -15,23 +15,15 @@ const formData = reactive({
       /* required */ (val) => !!val || "Required",
       /* length */ (val) => val.length < 4 || "Length needs to be less than 4",
     ],
-    country: [/* required */ (val) => !!val || "Required"],
-    address: [/* required */ (val) => !!val || "Required"],
+    country: [(val) => !!val || "Required"],
+    address: [(val) => !!val || "Required"],
   },
 });
-onMounted(() => {
-  console.log(formEl.value);
-});
+
 function submit() {
-  if (formEl.value.getStatus()) {
-    console.log("submit");
-  } else {
-    console.log("can't submit");
-  }
+  if (formEl.value.getStatus()) console.log("submit");
+  else console.log("can't submit");
 }
-watch(formData, () => {
-  console.log(formData);
-});
 </script>
 
 <template>
@@ -44,24 +36,24 @@ watch(formData, () => {
       text-5xl
       m-t-10
       m-b-20
-    ></VividTyping>
+    />
     <RegularForm
-      @submit.prevent="submit"
-      :formData="formData"
-      :inline="true"
       ref="formEl"
+      :form-data="formData"
+      :inline="true"
+      @submit.prevent="submit"
     >
       <RegularFormField label="年龄" prop="age">
-        <input type="text" v-model="formData.age" />
+        <input v-model="formData.age" type="text" />
       </RegularFormField>
       <RegularFormField label="姓名" prop="name">
-        <input type="text" v-model="formData.name" />
+        <input v-model="formData.name" type="text" />
       </RegularFormField>
       <RegularFormField label="国籍" prop="country">
-        <input type="text" v-model="formData.country" />
+        <input v-model="formData.country" type="text" />
       </RegularFormField>
       <RegularFormField label="地址" prop="address">
-        <input type="text" v-model="formData.address" />
+        <input v-model="formData.address" type="text" />
       </RegularFormField>
       <div flex="~ gap-5" justify-center items-center m-y-5>
         <button btn type="submit">提交</button>

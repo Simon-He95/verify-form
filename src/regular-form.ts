@@ -1,27 +1,28 @@
-import { defineComponent, h, watch, ref } from 'vue'
+import { defineComponent, h, ref, watch } from 'vue'
 import type { VNode } from 'vue'
 import { addStyle } from './add-style'
 
 addStyle()
 
 export const RegularForm = defineComponent({
-  name: "RegularForm",
+  name: 'RegularForm',
   props: {
     formData: {
       type: Object,
-      default: () => ({})
+      default: () => ({}),
     },
     inline: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { slots, expose }) {
-    const children: VNode[] = slots.default?.()!
+    const children: VNode[] = slots.default?.() || []
     const formData = props.formData
-    const RegularFormField = children.filter(child => {
+    const RegularFormField = children.filter((child) => {
       const type = child.type as string | { name: string }
-      if (typeof type === 'string' || type?.name !== 'RegularFormField') return false
+      if (typeof type === 'string' || type?.name !== 'RegularFormField')
+        return false
       const errorMsg = ref('')
       return Object.assign(child.props || {}, { errorMsg })
     })
@@ -37,9 +38,8 @@ export const RegularForm = defineComponent({
     function clear() {
       for (const key in formData) {
         const value = formData[key]
-        if (typeof value === 'string') {
+        if (typeof value === 'string')
           formData[key] = ''
-        }
       }
     }
     function getStatus() {
@@ -48,25 +48,24 @@ export const RegularForm = defineComponent({
 
     expose({ $reset: reset, $clear: clear, getStatus })
     return () => h('form', { class: `regular-form${props.inline ? ' regular-form__inline' : ''}` }, children)
-  }
+  },
 })
-
 
 function getRules(formData: Record<string, any>, key: any) {
   const rules = formData?.rule[key]
-  if (!rules) return false
+  if (!rules)
+    return false
   const val = formData[key]
   for (const rule of rules) {
     const result = rule(val)
-    if (result !== true) {
+    if (result !== true)
       return result
-    }
   }
   return false
 }
 
 function clearStatus(RegularFormField: VNode[]) {
-  RegularFormField.forEach(child => {
+  RegularFormField.forEach((child) => {
     const errorMsg = child.props?.errorMsg
     errorMsg.value = ''
   })
@@ -80,9 +79,9 @@ function emitProps(RegularFormField: VNode[], formData: any) {
       continue
     RegularFormField.some((child) => {
       const props = child.props!
-      if (props.prop === key) {
+      if (props.prop === key)
         props.errorMsg.value = msg
-      }
+      return true
     })
   }
 }
