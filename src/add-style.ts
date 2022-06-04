@@ -4,6 +4,10 @@ export function addStyle() {
     --regular-error-color: #f56c6c;
     --regular-input-color:#606266;
   }
+  .regular-form{
+    display:flex;
+    flex-wrap:wrap;
+  }
   .regular-form-field{
     display: flex;
     margin-bottom: 18px;

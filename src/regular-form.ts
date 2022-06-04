@@ -15,6 +15,10 @@ export const RegularForm = defineComponent({
       type: Boolean,
       default: false,
     },
+    initialRegular: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props, { slots, expose }) {
     const children: VNode[] = slots.default?.() || []
@@ -26,10 +30,13 @@ export const RegularForm = defineComponent({
       const errorMsg = ref('')
       return Object.assign(child.props || {}, { errorMsg })
     })
-    emitProps(RegularFormField, formData)
-
-    watch(formData, () => {
+    if (props.initialRegular) {
       emitProps(RegularFormField, formData)
+    }
+    let oldFormData = { ...formData }
+    watch(formData, () => {
+      emitSingleProp(RegularFormField, formData, diffKey(oldFormData, formData))
+      oldFormData = { ...formData }
     })
 
     function reset() {
@@ -43,6 +50,7 @@ export const RegularForm = defineComponent({
       }
     }
     function getStatus() {
+      emitProps(RegularFormField, formData)
       return !RegularFormField.some(child => child.props?.errorMsg.value)
     }
 
@@ -54,14 +62,14 @@ export const RegularForm = defineComponent({
 function getRules(formData: Record<string, any>, key: any) {
   const rules = formData?.rule[key]
   if (!rules)
-    return false
+    return undefined
   const val = formData[key]
   for (const rule of rules) {
     const result = rule(val)
-    if (result !== true)
+    if (typeof result === 'string')
       return result
   }
-  return false
+  return ''
 }
 
 function clearStatus(RegularFormField: VNode[]) {
@@ -74,14 +82,29 @@ function clearStatus(RegularFormField: VNode[]) {
 function emitProps(RegularFormField: VNode[], formData: any) {
   clearStatus(RegularFormField)
   for (const key in formData) {
-    const msg = getRules(formData, key)
-    if (!msg)
-      continue
-    RegularFormField.some((child) => {
-      const props = child.props!
-      if (props.prop === key)
-        props.errorMsg.value = msg
-      return true
-    })
+    emitSingleProp(RegularFormField, formData, key)
   }
+}
+
+function emitSingleProp(RegularFormField: VNode[], formData: any, key: string) {
+  if (!key) return
+  const msg = getRules(formData, key)
+  if (msg === undefined) {
+    return
+  }
+  return RegularFormField.some((child) => {
+    const props = child.props!
+    if (props.prop === key) {
+      props.errorMsg.value = msg
+      return true
+    }
+  })
+}
+
+function diffKey(v1: Record<string, any>, v2: Record<string, any>): string {
+  for (const key in v1) {
+    if (v1[key] !== v2[key])
+      return key
+  }
+  return ''
 }

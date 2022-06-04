@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
-// import { RegularForm, RegularFormField } from '../../src/index'
-import { RegularForm, RegularFormField } from 'verify-form'
+import { RegularForm, RegularFormField } from '../../src/index'
+// import { RegularForm, RegularFormField } from 'verify-form'
 import { VividTyping } from 'vivid-typing'
 import App from './App.vue'
 import '@unocss/reset/tailwind.css'
