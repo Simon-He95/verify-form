@@ -37,6 +37,7 @@
     "dev": "pkgroll --watch",
     "play": "pnpm run -C playground dev",
     "play:build": "pnpm run -C playground build",
+    "preview": "pnpm run -C playground preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "vue-tsc --noEmit",

@@ -1,9 +1,2 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <style>
-    path { fill: #222; }
-    @media (prefers-color-scheme: dark) {
-      path { fill: #ffffff; }
-    }
-  </style>
-  <path d="M27.562 26L17.17 8.928l2.366-3.888L17.828 4L16 7.005L14.17 4l-1.708 1.04l2.366 3.888L4.438 26H2v2h28v-2zM16 10.85L25.22 26H17v-8h-2v8H6.78z" />
-</svg>
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg t="1654353739448" class="icon" viewBox="0 0 1821 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3508" xmlns:xlink="http://www.w3.org/1999/xlink" width="355.6640625" height="200"><defs><style type="text/css">@font-face { font-family: feedback-iconfont; src: url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff2?t=1630033759944") format("woff2"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.woff?t=1630033759944") format("woff"), url("//at.alicdn.com/t/font_1031158_u69w8yhxdu.ttf?t=1630033759944") format("truetype"); }
+</style></defs><path d="M496.666667 888.4c0-48.666667 37.2-89.733333 86-89.733333 50.8 0 88.133333 41.2 88.133333 89.733333 0 52.933333-37.2 88.133333-88.133333 88.133333-54.8-2-86-39.2-86-88.133333z m828-622.4l-190.933334 37.333333 133.6 167.066667-82.533333 56.8L1077.733333 342.666667 969.333333 527.2l-82.533333-56.8 132.666667-167.066667-192.133334-37.333333 33.466667-92.933333 182 69.733333-17.333333-210.8H1129.333333l-18 210.933333L1293.333333 173.2l31.333334 92.8z" fill="#474747" p-id="3509"></path></svg>
