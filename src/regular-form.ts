@@ -17,8 +17,8 @@ export const RegularForm = defineComponent({
     },
     initialRegular: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
   },
   setup(props, { slots, expose }) {
     const children: VNode[] = slots.default?.() || []
@@ -30,9 +30,9 @@ export const RegularForm = defineComponent({
       const errorMsg = ref('')
       return Object.assign(child.props || {}, { errorMsg })
     })
-    if (props.initialRegular) {
+    if (props.initialRegular)
       emitProps(RegularFormField, formData)
-    }
+
     let oldFormData = { ...formData }
     watch(formData, () => {
       emitSingleProp(RegularFormField, formData, diffKey(oldFormData, formData))
@@ -81,23 +81,24 @@ function clearStatus(RegularFormField: VNode[]) {
 
 function emitProps(RegularFormField: VNode[], formData: any) {
   clearStatus(RegularFormField)
-  for (const key in formData) {
+  for (const key in formData)
     emitSingleProp(RegularFormField, formData, key)
-  }
 }
 
 function emitSingleProp(RegularFormField: VNode[], formData: any, key: string) {
-  if (!key) return
-  const msg = getRules(formData, key)
-  if (msg === undefined) {
+  if (!key)
     return
-  }
+  const msg = getRules(formData, key)
+  if (msg === undefined)
+    return
+
   return RegularFormField.some((child) => {
-    const props = child.props!
-    if (props.prop === key) {
-      props.errorMsg.value = msg
+    const { prop, errorMsg } = child.props!
+    if (prop === key) {
+      errorMsg.value = msg
       return true
     }
+    return false
   })
 }
 
