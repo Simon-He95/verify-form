@@ -2,6 +2,7 @@
 
 # API
 
+- initial-regular :Boolean // 首次加载就对初始化值进行rule的规则校验
 - inline :Boolean // 将regular-form-fields改为行内元素
 ### formRef中:
 - $reset :Function // 清空form下所有的错误消息
