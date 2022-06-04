@@ -1,12 +1,12 @@
 {
   "name": "verify-form",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "Verify Form Component",
   "author": "Simon He",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git + git@github.com:Simon-He95/verify-form.git"
+    "url": "https://github.com/Simon-He95/verify-form.git"
   },
   "bugs": {
     "url": "https://github.com/Simon-He95/verify-form/issues"
@@ -29,6 +29,9 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "build": "pkgroll --minify",
     "dev": "pkgroll --watch",
