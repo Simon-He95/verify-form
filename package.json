@@ -1,6 +1,6 @@
 {
   "name": "verify-form",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Verify Form Component",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -21,7 +21,7 @@
     }
   },
   "scripts": {
-    "build": "pkgroll",
+    "build": "pkgroll --minify",
     "dev": "pkgroll --watch",
     "play": "pnpm run -C playground dev",
     "play:build": "pnpm run -C playground build",
