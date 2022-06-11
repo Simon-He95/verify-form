@@ -42,7 +42,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "vue-tsc --noEmit",
-    "test": "vitest",
+    "test": "vitest --dir test",
     "ptest": "pnpm run -C playground test",
     "test:e2e": "cypress open",
     "prepublishOnly": "nr build",
