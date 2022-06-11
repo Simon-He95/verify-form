@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, watch } from 'vue'
+import { defineComponent, h, ref, watch, computed } from 'vue'
 import type { VNode } from 'vue'
 import { addStyle } from './add-style'
 
@@ -23,12 +23,17 @@ export const RegularForm = defineComponent({
   setup(props, { slots, expose }) {
     const children: VNode[] = slots.default?.() || []
     const formData = props.formData
-    const RegularFormField = children.filter((child) => {
+    const RegularFormField: VNode[] = children.filter((child) => {
       const type = child.type as string | { name: string }
       if (typeof type === 'string' || type?.name !== 'RegularFormField')
         return false
       const errorMsg = ref('')
       return Object.assign(child.props || {}, { errorMsg })
+    })
+    const errorList = computed(() => {
+      return RegularFormField.filter(item => item?.props?.errorMsg.value).map(item => {
+        return { errorMsg: item?.props?.errorMsg.value, prop: item?.props?.prop, el: item?.el?.querySelector('input') }
+      })
     })
     if (props.initialRegular)
       emitProps(RegularFormField, formData)
@@ -44,23 +49,32 @@ export const RegularForm = defineComponent({
     }
     function clear() {
       for (const key in formData) {
-        const value = formData[key]
-        if (typeof value === 'string')
-          formData[key] = ''
+        if (key === 'rules')
+          continue
+        formData[key] = ''
       }
+      emitProps(RegularFormField, formData)
     }
     function getStatus() {
       emitProps(RegularFormField, formData)
+      autoFocus()
       return !RegularFormField.some(child => child.props?.errorMsg.value)
     }
 
-    expose({ $reset: reset, $clear: clear, getStatus })
+    function getErrorMsg() {
+      return errorList.value
+    }
+    function autoFocus() {
+      errorList.value[0]?.el?.focus()
+    }
+
+    expose({ $reset: reset, $clear: clear, getStatus, getErrorMsg, autoFocus })
     return () => h('form', { class: `regular-form${props.inline ? ' regular-form__inline' : ''}` }, children)
   },
 })
 
 function getRules(formData: Record<string, any>, key: any) {
-  const rules = formData?.rule[key]
+  const rules = formData?.rules[key]
   if (!rules)
     return undefined
   const val = formData[key]
