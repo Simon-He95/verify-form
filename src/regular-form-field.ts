@@ -1,4 +1,5 @@
 import { defineComponent, h } from 'vue'
+import type { DefineComponent, Ref } from 'vue'
 
 export const RegularFormField = defineComponent({
   name: 'RegularFormField',
@@ -13,15 +14,11 @@ export const RegularFormField = defineComponent({
     errorMsg: {
       type: Object,
       default: () => ({}),
-    },
-    inline: {
-      type: Boolean,
-      default: false,
-    },
+    }
   },
   setup(props, { slots }) {
     return () => h('div', { class: 'regular-form-field' }, [h('label', { class: 'regular-form-field__label', style: `width:${props.width?.replace('px', '')}px` }, props.label), h('div', {
       class: 'regular-form-field__content',
     }, [slots.default?.(), h('div', { class: 'regular-form-field__error', style: `visibility:${props?.errorMsg.value ? 'visible' : 'hidden'}` }, props?.errorMsg.value)])])
   },
-})
+}) as DefineComponent<{ label: string, width: string, errorMsg: Ref<string> }>

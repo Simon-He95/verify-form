@@ -1,5 +1,5 @@
 import { computed, defineComponent, h, ref, watch } from 'vue'
-import type { VNode } from 'vue'
+import type { VNode, DefineComponent, UnwrapNestedRefs } from 'vue'
 import { addStyle } from './add-style'
 
 addStyle()
@@ -71,7 +71,7 @@ export const RegularForm = defineComponent({
     expose({ $reset: reset, $clear: clear, getStatus, getErrorMsg, autoFocus })
     return () => h('form', { class: `regular-form${props.inline ? ' regular-form__inline' : ''}` }, children)
   },
-})
+}) as DefineComponent<{ formData: UnwrapNestedRefs<Record<string, any>>, inline: boolean, initialRegular: boolean }>
 
 function getRules(formData: Record<string, any>, key: any) {
   const rules = formData?.rules[key]
