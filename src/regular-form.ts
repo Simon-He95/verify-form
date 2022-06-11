@@ -1,4 +1,4 @@
-import { defineComponent, h, ref, watch, computed } from 'vue'
+import { computed, defineComponent, h, ref, watch } from 'vue'
 import type { VNode } from 'vue'
 import { addStyle } from './add-style'
 
@@ -31,7 +31,7 @@ export const RegularForm = defineComponent({
       return Object.assign(child.props || {}, { errorMsg })
     })
     const errorList = computed(() => {
-      return RegularFormField.filter(item => item?.props?.errorMsg.value).map(item => {
+      return RegularFormField.filter(item => item?.props?.errorMsg.value).map((item) => {
         return { errorMsg: item?.props?.errorMsg.value, prop: item?.props?.prop, el: item?.el?.querySelector('input') }
       })
     })

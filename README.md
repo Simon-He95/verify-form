@@ -17,23 +17,23 @@
 
 ```js
 const formData = reactive({
-  age: "",
-  name: "",
-  country: "",
-  address: "",
+  age: '',
+  name: '',
+  country: '',
+  address: '',
   rules: {
     age: [
-      /* required */ (val) => !!val || "Required",
-      /* number */ (val) => !isNaN(Number(val)) || "Expected number",
-      /* length */ (val) =>
-        val <= 18 ? "You are too young" : val >= 100 ? "You are too old" : "",
+      /* required */ val => !!val || 'Required',
+      /* number */ val => !isNaN(Number(val)) || 'Expected number',
+      /* length */ val =>
+        val <= 18 ? 'You are too young' : val >= 100 ? 'You are too old' : '',
     ],
     name: [
-      /* required */ (val) => !!val || "Required",
-      /* length */ (val) => val.length > 2 || "Length needs to be more than 2",
+      /* required */ val => !!val || 'Required',
+      /* length */ val => val.length > 2 || 'Length needs to be more than 2',
     ],
   },
-});
+})
 ```
 
 # 安装

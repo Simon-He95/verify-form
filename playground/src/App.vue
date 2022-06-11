@@ -1,32 +1,35 @@
 <script setup lang="ts">
-const formEl = ref(null);
+const formEl = ref(null)
 const formData = reactive({
-  age: "",
-  name: "",
-  country: "",
-  address: "",
+  age: '',
+  name: '',
+  country: '',
+  address: '',
   rules: {
     age: [
-      /* required */ (val) => !!val || "Required",
-      /* number */ (val) => !isNaN(Number(val)) || "Expected number",
-      /* length */ (val) =>
-        val <= 18 ? "You are too young" : val >= 100 ? "You are too old" : "",
+      /* required */ val => !!val || 'Required',
+      /* number */ val => !isNaN(Number(val)) || 'Expected number',
+      /* length */ val =>
+        val <= 18 ? 'You are too young' : val >= 100 ? 'You are too old' : '',
     ],
     name: [
-      /* required */ (val) => !!val || "Required",
-      /* length */ (val) => val.length > 2 || "Length needs to be more than 2",
+      /* required */ val => !!val || 'Required',
+      /* length */ val => val.length > 2 || 'Length needs to be more than 2',
     ],
   },
-});
+})
 
 function submit() {
-  if (formEl.value.getStatus()) alert("Submission successful");
+  /* eslint no-alert: "off" */
+  if (formEl.value.getStatus()) {
+    alert('Submission successful')
+  }
   else {
     const msg = formEl.value
       .getErrorMsg()
       .map(({ prop, errorMsg }) => `${prop} is ${errorMsg}`)
-      .join("\n");
-    alert(msg);
+      .join('\n')
+    alert(msg)
   }
 }
 </script>
@@ -50,21 +53,27 @@ function submit() {
       @submit.prevent="submit"
     >
       <RegularFormField label="年龄" prop="age">
-        <input v-model="formData.age" type="text" />
+        <input v-model="formData.age" type="text">
       </RegularFormField>
       <RegularFormField label="姓名" prop="name">
-        <input v-model="formData.name" type="text" />
+        <input v-model="formData.name" type="text">
       </RegularFormField>
       <RegularFormField label="国籍" prop="country">
-        <input v-model="formData.country" type="text" />
+        <input v-model="formData.country" type="text">
       </RegularFormField>
       <RegularFormField label="地址" prop="address">
-        <input v-model="formData.address" type="text" />
+        <input v-model="formData.address" type="text">
       </RegularFormField>
       <div flex="~ gap-5" justify-center items-center m-y-5 w-full>
-        <button btn type="submit">提交</button>
-        <button btn type="button" @click="formEl.$reset()">清除错误</button>
-        <button btn type="button" @click="formEl.$clear()">清空数据</button>
+        <button btn type="submit">
+          提交
+        </button>
+        <button btn type="button" @click="formEl.$reset()">
+          清除错误
+        </button>
+        <button btn type="button" @click="formEl.$clear()">
+          清空数据
+        </button>
       </div>
     </RegularForm>
     <Footer />
