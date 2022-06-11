@@ -32,6 +32,11 @@ export function addStyle() {
     font-size: 12px;
     color: var(--regular-error-color);
   }
+  .regular-form-field__label.is-required:before{
+    content:"*";
+    color: var(--regular-error-color);
+    margin-right: 4px
+  }
   `
   const style = document.createElement('style')
   style.setAttribute('type', 'text/css')
