@@ -1,4 +1,4 @@
-## 实现一个类似于Element Plus的表单验证组件
+## 100行代码实现轻量级的表单验证组件
 
 [live demo](https://verify-form.hejian.club/)
 
