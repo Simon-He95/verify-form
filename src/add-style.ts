@@ -18,6 +18,7 @@ export function addStyle() {
     flex:1;
     box-sizing: border-box;
     padding: 0 10px;
+    position:relative;
   }
   .verify-form-field__content input{
     width:100%;
@@ -29,6 +30,10 @@ export function addStyle() {
     display: inline-flex;
   }
   .verify-form-field__error{
+    position:absolute;
+    left:50%;
+    top:100%;
+    transform:translateX(-50%);
     padding-top:2px;
     font-size: 12px;
     color: var(--verify-error-color);
