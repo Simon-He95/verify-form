@@ -20,8 +20,8 @@ export const VerifyFormField = defineComponent({
     },
   },
   setup(props, { slots }) {
-    return () => h('div', { class: 'regular-form-field' }, [h('label', { class: `regular-form-field__label${props.required ? ' is-required' : ''}`, style: `width:${props.width?.replace('px', '')}px` }, props.label), h('div', {
-      class: 'regular-form-field__content',
-    }, [slots.default?.(), h('div', { class: 'regular-form-field__error', style: `visibility:${props?.errorMsg.value ? 'visible' : 'hidden'}` }, props?.errorMsg.value)])])
+    return () => h('div', { class: 'verify-form-field' }, [h('label', { class: `verify-form-field__label${props.required ? ' is-required' : ''}`, style: `width:${props.width?.replace('px', '')}px` }, props.label), h('div', {
+      class: 'verify-form-field__content',
+    }, [slots.default?.(), h('div', { class: 'verify-form-field__error', style: `visibility:${props?.errorMsg.value ? 'visible' : 'hidden'}` }, props?.errorMsg.value)])])
   },
 }) as DefineComponent<{ label: string; width: string; errorMsg: Ref<string>; required: boolean }>

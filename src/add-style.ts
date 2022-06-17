@@ -1,41 +1,41 @@
 export function addStyle() {
   const styles = `
   :root{
-    --regular-error-color: #f56c6c;
-    --regular-input-color:#606266;
+    --verify-error-color: #f56c6c;
+    --verify-input-color:#606266;
   }
-  .regular-form{
+  .verify-form{
     display:flex;
     flex-wrap:wrap;
   }
-  .regular-form-field{
+  .verify-form-field{
     display: flex;
     margin-bottom: 18px;
     align-items:center;
   }
   
-  .regular-form-field__content{
+  .verify-form-field__content{
     flex:1;
     box-sizing: border-box;
     padding: 0 10px;
   }
-  .regular-form-field__content input{
+  .verify-form-field__content input{
     width:100%;
     border-radius:5px;
     text-indent:10px;
-    color:var(--regular-input-color);
+    color:var(--verify-input-color);
   }
-  .regular-form__inline > .regular-form-field{
+  .verify-form__inline > .verify-form-field{
     display: inline-flex;
   }
-  .regular-form-field__error{
+  .verify-form-field__error{
     padding-top:2px;
     font-size: 12px;
-    color: var(--regular-error-color);
+    color: var(--verify-error-color);
   }
-  .regular-form-field__label.is-required:before{
+  .verify-form-field__label.is-required:before{
     content:"*";
-    color: var(--regular-error-color);
+    color: var(--verify-error-color);
     margin-right: 4px
   }
   `

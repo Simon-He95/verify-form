@@ -23,29 +23,29 @@ export const VerifyForm = defineComponent({
   setup(props, { slots, expose }) {
     const children: VNode[] = slots.default?.() || []
     const formData = props.formData
-    const RegularFormField: VNode[] = children.filter((child) => {
+    const VerifyFormField: VNode[] = children.filter((child) => {
       const type = child.type as string | { name: string }
-      if (typeof type === 'string' || type?.name !== 'RegularFormField')
+      if (typeof type === 'string' || type?.name !== 'VerifyFormField')
         return false
       const errorMsg = ref('')
       return Object.assign(child.props || {}, { errorMsg })
     })
     const errorList = computed(() => {
-      return RegularFormField.filter(item => item?.props?.errorMsg.value).map((item) => {
+      return VerifyFormField.filter(item => item?.props?.errorMsg.value).map((item) => {
         return { errorMsg: item?.props?.errorMsg.value, prop: item?.props?.prop, el: item?.el?.querySelector('input') }
       })
     })
     if (props.initialRegular)
-      emitProps(RegularFormField, formData)
+      emitProps(VerifyFormField, formData)
 
     let oldFormData = { ...formData }
     watch(formData, () => {
-      emitSingleProp(RegularFormField, formData, diffKey(oldFormData, formData))
+      emitSingleProp(VerifyFormField, formData, diffKey(oldFormData, formData))
       oldFormData = { ...formData }
     })
 
     function reset() {
-      clearStatus(RegularFormField)
+      clearStatus(VerifyFormField)
     }
     function clear() {
       for (const key in formData) {
@@ -53,12 +53,12 @@ export const VerifyForm = defineComponent({
           continue
         formData[key] = ''
       }
-      emitProps(RegularFormField, formData)
+      emitProps(VerifyFormField, formData)
     }
     function getStatus() {
-      emitProps(RegularFormField, formData)
+      emitProps(VerifyFormField, formData)
       autoFocus()
-      return !RegularFormField.some(child => child.props?.errorMsg.value)
+      return !VerifyFormField.some(child => child.props?.errorMsg.value)
     }
 
     function getErrorMsg() {
@@ -69,7 +69,7 @@ export const VerifyForm = defineComponent({
     }
 
     expose({ $reset: reset, $clear: clear, getStatus, getErrorMsg, autoFocus })
-    return () => h('form', { class: `regular-form${props.inline ? ' regular-form__inline' : ''}` }, children)
+    return () => h('form', { class: `verify-form${props.inline ? ' verify-form__inline' : ''}` }, children)
   },
 }) as DefineComponent<{ formData: UnwrapNestedRefs<Record<string, any>>; inline: boolean; initialRegular: boolean }>
 
@@ -86,27 +86,27 @@ function getRules(formData: Record<string, any>, key: any) {
   return ''
 }
 
-function clearStatus(RegularFormField: VNode[]) {
-  RegularFormField.forEach((child) => {
+function clearStatus(VerifyFormField: VNode[]) {
+  VerifyFormField.forEach((child) => {
     const errorMsg = child.props?.errorMsg
     errorMsg.value = ''
   })
 }
 
-function emitProps(RegularFormField: VNode[], formData: any) {
-  clearStatus(RegularFormField)
+function emitProps(VerifyFormField: VNode[], formData: any) {
+  clearStatus(VerifyFormField)
   for (const key in formData)
-    emitSingleProp(RegularFormField, formData, key)
+    emitSingleProp(VerifyFormField, formData, key)
 }
 
-function emitSingleProp(RegularFormField: VNode[], formData: any, key: string) {
+function emitSingleProp(VerifyFormField: VNode[], formData: any, key: string) {
   if (!key)
     return
   const msg = getRules(formData, key)
   if (msg === undefined)
     return
 
-  return RegularFormField.some((child) => {
+  return VerifyFormField.some((child) => {
     const { prop, errorMsg } = child.props!
     if (prop === key) {
       errorMsg.value = msg
