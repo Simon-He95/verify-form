@@ -46,25 +46,25 @@ function submit() {
       m-b-20
     />
     <div border="1px lightgray rounded" p10 ma max-w-300 min-w-100>
-      <RegularForm
+      <VerifyForm
         ref="formEl"
         :form-data="formData"
         :inline="true"
         :initial-regular="false"
         @submit.prevent="submit"
       >
-        <RegularFormField label="年龄" prop="age" required>
+        <VerifyFormField label="年龄" prop="age" required>
           <input v-model="formData.age" type="text">
-        </RegularFormField>
-        <RegularFormField label="姓名" prop="name" required>
+        </VerifyFormField>
+        <VerifyFormField label="姓名" prop="name" required>
           <input v-model="formData.name" type="text">
-        </RegularFormField>
-        <RegularFormField label="国籍" prop="country">
+        </VerifyFormField>
+        <VerifyFormField label="国籍" prop="country">
           <input v-model="formData.country" type="text">
-        </RegularFormField>
-        <RegularFormField label="地址" prop="address">
+        </VerifyFormField>
+        <VerifyFormField label="地址" prop="address">
           <input v-model="formData.address" type="text">
-        </RegularFormField>
+        </VerifyFormField>
         <div flex="~ gap-5" justify-center items-center m-t-5 w-full>
           <button btn type="submit">
             提交
@@ -76,7 +76,7 @@ function submit() {
             清空数据
           </button>
         </div>
-      </RegularForm>
+      </VerifyForm>
     </div>
 
     <Footer />

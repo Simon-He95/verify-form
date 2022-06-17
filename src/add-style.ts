@@ -11,6 +11,7 @@ export function addStyle() {
   .regular-form-field{
     display: flex;
     margin-bottom: 18px;
+    align-items:center;
   }
   
   .regular-form-field__content{

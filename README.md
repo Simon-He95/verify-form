@@ -46,11 +46,11 @@ npm install -D verify-form
 
 ```
 import { createApp } from 'vue'
-import { RegularForm, RegularFormField } from 'verify-form'
+import { VerifyForm, VerifyFormField } from 'verify-form'
 
 const app = createApp(App)
-app.component('RegularForm', RegularForm)
-app.component('RegularFormField', RegularFormField)
+app.component('VerifyForm', VerifyForm)
+app.component('VerifyFormField', VerifyFormField)
 app.mount('#app')
 ```
 # 使用

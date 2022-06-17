@@ -1,2 +1,2 @@
-export * from './regular-form'
-export * from './regular-form-field'
+export * from './verify-form'
+export * from './verify-form-field'
