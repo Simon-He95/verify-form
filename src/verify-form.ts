@@ -74,7 +74,7 @@ export const VerifyForm = defineComponent({
 }) as DefineComponent<{ formData: UnwrapNestedRefs<Record<string, any>>; inline: boolean; initialRegular: boolean }>
 
 function getRules(formData: Record<string, any>, key: any) {
-  const rules = formData?.rules[key]
+  const rules = formData?.rules?.[key]
   if (!rules)
     return undefined
   const val = formData[key]
