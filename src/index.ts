@@ -1,2 +1,2 @@
-export * from './verify-form'
-export * from './verify-form-field'
+export { VerifyForm } from './verify-form'
+export { VerifyFormField } from './verify-form-field'
