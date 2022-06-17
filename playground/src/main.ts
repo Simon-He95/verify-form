@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { VividTyping } from 'vivid-typing'
-import { VerifyForm, VerifyFormField } from '../../src'
+import { VerifyForm, VerifyFormField } from 'verify-form'
 import App from './App.vue'
 import '@unocss/reset/tailwind.css'
 import './styles/main.css'
