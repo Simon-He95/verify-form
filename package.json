@@ -61,8 +61,10 @@
     "eslint-plugin-n": "^15.2.1",
     "pkgroll": "^1.3.1",
     "typescript": "^4.7.2",
-    "verify-form": "workspace:1.0.4",
-    "vitest": "^0.13.1"
+    "verify-form": "workspace:1.0.7",
+    "vite": "^4.0.1",
+    "vitest": "^0.13.1",
+    "vivid-typing": "^1.1.30"
   },
   "eslintConfig": {
     "extends": "@antfu"
